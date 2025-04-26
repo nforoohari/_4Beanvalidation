@@ -1,6 +1,5 @@
 package ir.digixo._4beanvalidation.entity;
 
-import ir.digixo._4beanvalidation.custom.CouponCode;
 import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
@@ -9,39 +8,21 @@ public class Product {
 
     private Long id;
 
-
-    @NotNull
-    @Size(min = 1, max = 50,message = "is required!!")
+    @NotNull(message = "Name can not be null. ")
+    @Size(min = 2, max = 50, message = "Name of product must be entered. ")
     private String name;
 
-
-
-    @NotNull
-    @Min(value = 0,message = "must be greater than zero")
-    @Max(value = 1000,message = "must be lower than 1000")
+    @NotNull(message = "Price can not be null. ")
+    @Min(value = 0, message = "Price value must be greater than zero. ")
+    @Max(value = 50000, message = "Price value must be lower than 50000. ")
+    @Digits(integer = 5, fraction = 2, message = "Price value is not valid. ")
     private BigDecimal price;
 
-    @Pattern(regexp = "^[a-zA-Z0-9]{10}",message = "only 10 number or char")
+    @Pattern(regexp = "^[a-zA-Z0-9]{10}", message = "Only 10 numbers or characters. ")
     private String regX;
-
-    //custom validation
-    @CouponCode(value = "takhfif70",message = "start with takhfif70")
-    private String couponCode;
 
     public Product() {
     }
-
-    public Product(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Product(Long id, String name, BigDecimal price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-    }
-
 
     public String getRegX() {
         return regX;
@@ -63,9 +44,7 @@ public class Product {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
     public BigDecimal getPrice() {
         return price;
@@ -75,11 +54,4 @@ public class Product {
         this.price = price;
     }
 
-    public String getCouponCode() {
-        return couponCode;
-    }
-
-    public void setCouponCode(String couponCode) {
-        this.couponCode = couponCode;
-    }
 }

@@ -14,28 +14,24 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
 
     @GetMapping("/showForm")
-    public String showForm(Model model)
-    {
+    public String showForm(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
         return "productForm";
     }
 
     @PostMapping("/processForm")
-    public String processForm(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult)
-    {
-        if (bindingResult.hasErrors())
-        {
-            System.out.println(bindingResult);
+    public String processForm(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            System.out.println("bindingResult: " + bindingResult);
+            System.out.println("product: " + product.getName() + "  " + product.getPrice());
             return "productForm";
-        }
-        else
+        } else
             return "productForm-ok";
     }
 
     @InitBinder
-    public void initBinder(WebDataBinder binder)
-    {
+    public void initBinder(WebDataBinder binder) {
         StringTrimmerEditor trimmerEditor = new StringTrimmerEditor(true);
         binder.registerCustomEditor(String.class, trimmerEditor);
     }

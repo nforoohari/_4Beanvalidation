@@ -2,14 +2,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <title>productForm</title>
     <style>
-        .error{color: red}
+        .error {
+            color: red
+        }
     </style>
 </head>
 <body>
-
-
 <form:form action="processForm" modelAttribute="product" method="post">
+
     <form:hidden path="id"/>
 
     <table>
@@ -26,36 +28,16 @@
         </tr>
         <form:errors path="price" cssClass="error"/>
 
-
-
         <tr>
             <td><label>regx:</label></td>
             <td><form:input path="regX"/></td>
         </tr>
         <form:errors path="regX" cssClass="error"/>
 
-
-        <tr>
-            <td><label>couponCode:</label></td>
-            <td><form:input path="couponCode"/></td>
-        </tr>
-        <form:errors path="couponCode" cssClass="error"/>
         <tr>
             <td><label></label></td>
             <td><input type="submit" value="Save Product"></td>
         </tr>
-
-
-
-       <%-- <tr>
-            <td><label>Description:</label></td>
-            <td><form:input path="description"/></td>
-        </tr>
-        <tr>
-            <td><label>Price:</label></td>
-            <td><form:input path="price"/></td>
-        </tr>
-       --%>
         </tbody>
     </table>
 </form:form>

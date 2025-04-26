@@ -2,11 +2,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <style>
-        .error{color: red}
-    </style>
+    <title>productForm-ok</title>
 </head>
 <body>
-okkkkk
+<h1>OK</h1>
 </body>
 </html>
